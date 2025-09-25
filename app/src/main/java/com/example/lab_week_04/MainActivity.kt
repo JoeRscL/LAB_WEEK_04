@@ -1,43 +1,56 @@
 package com.example.lab_week_04
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
-import com.google.android.material.navigation.NavigationView
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var appBarConfiguration: AppBarConfiguration
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                    as NavHostFragment
-        val navController = navHostFragment.navController
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.listFragment, R.id.favoritesFragment, R.id.cafeFragment),
-            findViewById(R.id.drawer_layout)
+        setSupportActionBar(toolbar)
+
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.app_name,
+            R.string.app_name
         )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, ListFragment())
+                .commit()
+        }
 
-        findViewById<NavigationView>(R.id.nav_view)
-            ?.setupWithNavController(navController)
-
-        // Tambahan untuk Bottom Navigation
-        findViewById<BottomNavigationView>(R.id.bottom_nav)
-            ?.setupWithNavController(navController)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        bottomNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.listFragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, ListFragment())
+                        .commit()
+                    true
+                }
+                R.id.cafeFragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, CafeFragment())
+                        .commit()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

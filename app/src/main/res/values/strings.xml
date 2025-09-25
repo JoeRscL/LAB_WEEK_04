@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LAB_WEEK_04</string>
     <string name="app_title">Coffee App</string>
@@ -11,7 +12,7 @@
     <string name="americano_title">AMERICANO</string>
     <string name="americano_desc">Espresso with added hot water (100-150 ml). Often served in a cappuccino cup.</string>
     <string name="latte_title">CAFFE LATTE</string>
-    <string name="latte_desc">A tall, mild /milk coffee/. Espresso with steamed milk and only a little foam.</string>
+    <string name="latte_desc">A tall, mild milk coffee. Espresso with steamed milk and only a little foam.</string>
 
     <string name="coffee_list">Coffee List</string>
     <string name="coffee_favorites">My Favorite Coffee</string>
@@ -21,8 +22,13 @@
     <string name="bottom_menu_cafe">Cafe</string>
 
     <string name="starbucks_title">STARBUCKS</string>
+    <string name="starbucks_desc">Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. It is the worlds largest coffeehouse chain.</string>
+
     <string name="janjijiwa_title">JANJI JIWA</string>
+    <string name="janjijiwa_desc">Janji Jiwa is a local coffee brand that has grown rapidly in Indonesia. Carrying the jargon &quot;kopi dari hati&quot;, Janji Jiwa is committed to serving quality coffee for everyone.</string>
+
     <string name="kopikenangan_title">KOPI KENANGAN</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="kopikenangan_desc">Kopi Kenangan dreams of serving high quality coffee, made with fresh local ingredients, to customers across Indonesia and the world.</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
