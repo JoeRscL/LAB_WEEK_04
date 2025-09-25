@@ -27,12 +27,11 @@ class CafeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tv = view.findViewById<TextView>(R.id.content_description)
-        tv.text = content ?: "No content"
+        tv.text = content
     }
 
     companion object {
         private const val TAB_CONTENT = "TAB_CONTENT"
-
         fun newInstance(content: String) =
             CafeDetailFragment().apply {
                 arguments = Bundle().apply {
